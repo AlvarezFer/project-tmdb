@@ -11,18 +11,13 @@ const cors = require("cors");
 const brcypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
-
 app.use(volleyball);
 app.use(express.static("build"));
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api", routes);
-
-// app.use("/api", (req, res) => {
-//   res.sendStatus(404);
-// });
 
 db.sync({ force: false })
   .then(() => {

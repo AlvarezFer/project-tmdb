@@ -1,3 +1,16 @@
-.n {
-  color: white;
-}
+
+
+
+
+
+.tle{  font-size: 28px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: grey;}
+
+  .btn-color{
+    
+  border-radius: 6px;}
+
+  .n{margin: 4px;
+  }

@@ -1,6 +1,14 @@
-.n {
-  color: white;
-}
-h1 {
-  color: white;
-}
+
+
+.tit{   font-size: 28px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: gray;}
+
+  .n{margin: 4px;
+  }
+
+
+  .btn-color{
+    
+    border-radius: 6px;}

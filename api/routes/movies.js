@@ -1,8 +1,9 @@
 const { default: axios } = require("axios");
 const express = require("express");
 const peliculasRoute = express.Router();
-const Peliculas = require("../models/movies");
-
+const Peliculas = require("../models/favoritos");
+const fetch = (url) =>
+  import("node-fetch").then(({ default: fetch }) => fetch(url));
 peliculasRoute.get("/", (req, res) => {
   fetch(
     `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.API_KEY}`

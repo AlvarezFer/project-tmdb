@@ -21,24 +21,40 @@ usersRoute.post("/login", (req, res) => {
       const payload = {
         email: user.email,
         name: user.name,
-        lastname: user.lastName,
+        lastName: user.lastName,
+        id: user.id,
       };
       const token = generateToken(payload);
-      console.log(token);
 
-      res.cookie("token", token).send(payload);
+      res.cookie("token", token);
+      res.send(payload);
     });
   });
 });
 
-usersRoute.get("/logueado", (req, res) => {
+usersRoute.get("/secret", (req, res) => {
   const token = req.cookies.token;
 
   const { user } = validateToken(token);
 
-  console.log("payload", user);
+  res.send(user);
+});
 
-  res.send(payload);
+usersRoute.get("/me", (req, res) => {
+  const token = req.cookies.token;
+
+  if (!token) res.sendStatus(401);
+
+  const { user } = validateToken(token);
+  if (!user) res.sendStatus(401);
+
+  res.send(user);
+});
+
+usersRoute.post("/logout", (req, res) => {
+  res.clearCookie("token");
+
+  res.sendStatus(204);
 });
 
 module.exports = usersRoute;

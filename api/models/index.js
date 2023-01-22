@@ -1,4 +1,8 @@
 const Users = require("./users");
-const Peliculas = require("./movies");
+const Favoritos = require("./favoritos");
 
-module.exports = { Users, Peliculas };
+Users.hasMany(Favoritos);
+
+Favoritos.belongsTo(Users, { as: "author" });
+
+module.exports = { Users, Favoritos };

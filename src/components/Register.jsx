@@ -1,36 +1,22 @@
 import axios from "axios";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "../estilos.css/register.css";
-import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const ref = useRef();
 
-  const navigate = useNavigate();
-
-  const handleName = (e) => {
-    setName(e.target.value);
-  };
-  const handleLastName = (e) => {
-    setLastName(e.target.value);
-  };
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    ref.current.reset();
-    setLoading(true);
+    setName("");
+    setLastName("");
+    setEmail("");
+    setPassword("");
+
     axios
       .post("http://localhost:9000/api/users/register", {
         name,
@@ -39,37 +25,61 @@ const Register = () => {
         password,
       })
       .then((res) => {
-        navigate("/login");
-        setLoading(false);
         return res.data;
       });
+    Swal.fire({
+      title: "Exito",
+      text: "Se registró de manera exitosa",
+      icon: "success",
+      allowOutsideClick: false,
+    });
   };
 
   return (
     <div className="container">
-      <h1>FORMULARIO DE REGISTRO</h1>
-      <form onSubmit={handleSubmit} ref={ref}>
+      <h1 className="tit">REGISTRARSE</h1>
+      <form onSubmit={handleSubmit}>
         <ul>
           <li>
             <label className="n">Nombre:</label>
-            <input type="text" onChange={handleName} value={name} />
+            <input
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+              required
+            />
           </li>
           <li>
             <label className="n">Apellido:</label>
-            <input type="text" onChange={handleLastName} value={lastName} />
+            <input
+              type="text"
+              onChange={(e) => setLastName(e.target.value)}
+              value={lastName}
+              required
+            />
           </li>
           <li>
             <label className="n">E-mail:</label>
-            <input type="email" onChange={handleEmail} value={email} />
+            <input
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              required
+            />
           </li>
-
           <li>
             <label className="n">Contraseña:</label>
-            <input type="password" onChange={handlePassword} value={password} />
+            <input
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              required
+            />
           </li>
+          <br />
           <li>
-            <button type="submit" disabled={loading}>
-              Registrarse:
+            <button className="btn-color" type="submit">
+              Registrarse
             </button>
           </li>
         </ul>

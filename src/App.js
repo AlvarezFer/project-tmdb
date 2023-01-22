@@ -1,22 +1,22 @@
 import React from "react";
 
-import Register from "./components/Register";
-import Login from "./components/Login";
-import Ingreso from "./components/Ingreso";
+import Navbar from "./commons/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Movies from "./components/Movies";
 import SelectMovie from "./components/SelectMovie";
+import AuthContext from "./context/AuthContext";
 
 const App = () => {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Ingreso />}></Route>
-        <Route path="/movies" element={<Movies />}></Route>
-        <Route path="/movies/:movieId" element={<SelectMovie />}></Route>
-        <Route path="/register" element={<Register />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-      </Routes>
+      <AuthContext>
+        <Routes>
+          <Route path="/" element={<Navbar />}></Route>
+
+          <Route path="/movies" element={<Movies />}></Route>
+          <Route path="/movies/:movieId" element={<SelectMovie />}></Route>
+        </Routes>
+      </AuthContext>
     </>
   );
 };

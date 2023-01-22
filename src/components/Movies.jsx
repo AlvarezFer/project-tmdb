@@ -2,12 +2,36 @@ import { Link } from "react-router-dom";
 import useMovies from "../hooks/useMovies";
 import Search from "./Search";
 import "../estilos.css/movies.css";
+import Navbar from "../commons/Navbar";
+import "../estilos.css/button.css";
+import axios from "axios";
 import useSearchMovies from "../hooks/useSearchMovies";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useState } from "react";
 
 const Card = ({ title, poster, id }) => {
+  const [fav, setFav] = useState("");
+  const usuario = JSON.parse(localStorage.getItem("user"));
+
+  const favMoviesSubmit = () => {
+    setFav(title, poster, id);
+
+    axios
+      .post("http://localhost:9000/api/favoritos", {
+        title,
+        poster,
+        id,
+      })
+      .then((res) => res.data);
+  };
+
   return (
     <div className="container-movies">
-      <Link to={`/movies/${id}`}>
+      <div className="fav-div"> </div>
+      <Link
+        to={`/movies/${id}`}
+        style={{ textDecoration: "none", textAlign: "center" }}
+      >
         <div className="p-movies">
           <h2 className="h-title">{title}</h2>
         </div>
@@ -20,6 +44,15 @@ const Card = ({ title, poster, id }) => {
             alt={title}
           />
         </Link>
+        {
+          <div className="fav-btn" onClick={favMoviesSubmit}>
+            {fav ? (
+              <FaHeart style={{ color: "yellow", fontSize: "25px" }} />
+            ) : (
+              <FaRegHeart style={{ color: "yellow", fontSize: "25px" }} />
+            )}
+          </div>
+        }
       </div>
     </div>
   );
@@ -29,8 +62,12 @@ const Movies = () => {
   const peliculas = useMovies();
   const [resultados, buscar] = useSearchMovies();
 
+  const usuario = JSON.parse(localStorage.getItem("user")) || {};
+
   return (
     <div>
+      {usuario ? <Navbar /> : ""}
+
       <Search buscador={buscar} />
 
       {resultados.length ? (

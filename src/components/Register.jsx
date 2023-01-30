@@ -43,6 +43,7 @@ const Register = () => {
           <li>
             <label className="n">Nombre:</label>
             <input
+              className="inp-stl"
               type="text"
               onChange={(e) => setName(e.target.value)}
               value={name}
@@ -52,6 +53,7 @@ const Register = () => {
           <li>
             <label className="n">Apellido:</label>
             <input
+              className="inp-stl"
               type="text"
               onChange={(e) => setLastName(e.target.value)}
               value={lastName}
@@ -61,6 +63,7 @@ const Register = () => {
           <li>
             <label className="n">E-mail:</label>
             <input
+              className="inp-stl"
               type="email"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
@@ -70,6 +73,7 @@ const Register = () => {
           <li>
             <label className="n">Contraseña:</label>
             <input
+              className="inp-stl"
               type="password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}

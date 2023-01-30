@@ -2,12 +2,20 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+// import { useContext } from "react";
 import "../estilos.css/login.css";
 import Swal from "sweetalert2";
+// import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // const datosUsuario = useContext(AuthContext);
+
+  // const { user, isAuthenticated, toggleAuth } = datosUsuario;
+
+  // const usuario = JSON.parse(localStorage.getItem("user"));
 
   const navigate = useNavigate();
 
@@ -24,19 +32,26 @@ const Login = () => {
         },
         { withCredentials: true }
       )
-      .then((res) => localStorage.setItem("user", JSON.stringify(res.data)));
-    Swal.fire({
-      title: "Exito",
-      text: "Iniciaste sesion de manera exitosa",
-      icon: "success",
-      allowOutsideClick: false,
-    })
       .then((res) => {
-        if (res.isConfirmed) {
-          navigate("/movies");
-        }
+        localStorage.setItem("user", JSON.stringify(res.data));
+        Swal.fire({
+          title: "Exito",
+          text: "Iniciaste sesion de manera exitosa",
+          icon: "success",
+          allowOutsideClick: false,
+        }).then((res) => {
+          if (res.isConfirmed) {
+            navigate("/movies");
+          }
+        });
       })
-      .catch((error) => error);
+      .catch((error) => console.log(error, "es necesario registrarse"));
+    Swal.fire({
+      title: "Error",
+      text: "Debes registrarte para poder ingresar",
+      icon: "error",
+      allowOutsideClick: false,
+    });
   };
 
   return (
@@ -52,6 +67,7 @@ const Login = () => {
               type="text"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
+              required
             />
           </li>
           <li>
@@ -61,6 +77,7 @@ const Login = () => {
               type="password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
+              required
             />
           </li>
           <br />

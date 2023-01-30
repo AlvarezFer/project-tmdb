@@ -29,8 +29,8 @@ const SelectMovie = () => {
           alt=""
         />
         <div className="col">
-          <h2>{card.title} </h2>
-          <p>{card.overview}</p>
+          <h2 className="h-details">{card.title} </h2>
+          <p className="p-details">{card.overview}</p>
         </div>
       </div>
     </>

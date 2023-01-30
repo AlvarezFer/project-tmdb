@@ -11,18 +11,30 @@ import { useState } from "react";
 
 const Card = ({ title, poster, id }) => {
   const [fav, setFav] = useState("");
-  const usuario = JSON.parse(localStorage.getItem("user"));
+  const [tog, setTog] = useState(true);
 
   const favMoviesSubmit = () => {
-    setFav(title, poster, id);
+    if (tog === true) {
+      setTog(false);
+      setFav(title, poster, id);
+    } else {
+      setTog(true);
+      setFav("");
+    }
 
-    axios
-      .post("http://localhost:9000/api/favoritos", {
-        title,
-        poster,
-        id,
-      })
-      .then((res) => res.data);
+    if (tog) {
+      console.log(title, poster, id);
+
+      axios
+        .post("http://localhost:9000/api/favoritos", {
+          title,
+          poster,
+          id,
+        })
+        .then((res) => res.data);
+    } else {
+      console.log("entraste al delete");
+    }
   };
 
   return (

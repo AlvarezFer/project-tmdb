@@ -16,13 +16,17 @@
   cursor: pointer;
   border: none;
   background: none;
+  margin-top: 40px;
 }
 
 .searchInput {
   height: 30px;
   border-radius: 10px;
   padding: 5px 30px 5px 10px;
-  margin-left: 32px;
+  margin-left: 170px;
+  border: none;
+  margin-top: 80px;
+ 
  
  
 }

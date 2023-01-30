@@ -1,50 +1,60 @@
 
 
 .container-movies {
-  margin: 10px 20px;
-  box-shadow: 0 4px 8px 0 lightskyblue, 0 6px 20px rgba(0, 0, 0, 0, 19);
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: auto;
-  align-items: center;
   
+ position: relative;
+  display: flex;
+   flex-direction: column;
+  justify-content: center;
+  
+  align-items: center;   
+
+ margin: 10px 20px;
+ box-shadow: 0 4px 8px 0 lightskyblue, 0 6px 20px rgba(0, 0, 0, 0, 19);
+  width: 90%;
+ left: 126px;
+ top: 40px;
+ 
 }
+
 
 .p-movies {
   justify-content: center;
   height: auto;
   align-items: center;
   margin: 0 auto;
-  padding: 5px;
   color: white;
+
 }
 
 .h-title {
   font-size: 1.3em;
+color: white;
 
  
 }
-
 
 
 .img-movies {
 position: relative;
   width: 100%;
   height: auto;
-  margin: 0 auto;
+  
 
   padding: 5px;
   text-align: center;
+
+  
 }
 
 .img-movie {
   border-radius: 10px;
+  
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 body {
-  background-color: black;
+  background-color: black
 }
 
 @media (max-width: 600px) {

@@ -19,10 +19,11 @@
 }
 
 .img-col {
-  margin-left: 15%;
+  margin-left: 10%;
   margin-top: 16vh;
   width: 20%;
   height: 20%;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .col {
@@ -35,8 +36,14 @@
   margin: 0 auto;
   padding: 5px;
   color: white;
-  font-size: 20px;
+ margin-bottom: 20px;
+ margin-right: 20px;
 }
+
+.p-details{font-size: 40px;
+margin-top: 140px;}
+
+.h-details{font-size: 60px;}
 
 @media (max-width: 600px) {
   .details-container {

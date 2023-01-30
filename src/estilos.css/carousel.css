@@ -1,0 +1,39 @@
+
+
+.d-block {
+
+    transition:(4s ease-in-out left);
+    opacity: 0.4;
+}
+
+
+.p-1{font-size: 60px;
+    margin-bottom: 120px;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;}
+.p-2{ 
+    font-size: 60px;
+    margin-bottom: 50px;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;}
+
+
+
+
+    .p-inicial{ font-size: 45px;
+        color: white;
+    margin-bottom: 160px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+
+}
+
+
+.title-i{ margin-bottom: 550px;
+    margin-right: 900px;
+color: red;
+
+}
+  
+
+   

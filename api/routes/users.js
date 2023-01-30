@@ -13,7 +13,7 @@ usersRoute.post("/login", (req, res) => {
   const { email, password } = req.body;
 
   Users.findOne({ where: { email } }).then((user) => {
-    if (!user) return res.status(401);
+    if (!user) return res.status(401).send();
 
     user.validatePassword(password).then((isValid) => {
       if (!isValid) res.sendStatus(401);
@@ -22,7 +22,6 @@ usersRoute.post("/login", (req, res) => {
         email: user.email,
         name: user.name,
         lastName: user.lastName,
-        id: user.id,
       };
       const token = generateToken(payload);
 

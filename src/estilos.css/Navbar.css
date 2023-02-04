@@ -1,23 +1,17 @@
+.custom-navbar {
+  height: 50px;
+  border: 2px solid gray;
 
-
-.navbar-expand-lg{height: 50px;
-    border: 2px solid gray;
-   
-    opacity: 0.8;
-    
+  opacity: 0.9;
 }
 
-.custom-navbar{
-    background-color: gray;
- 
+.custom-navbar {
+  background-color: gray;
 }
-  
 
-
-
-
-
-.welcome{ color: black;
-    font-size: 30px;
-    margin-right: 120px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+.welcome {
+  color: black;
+  font-size: 30px;
+  margin-right: 120px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

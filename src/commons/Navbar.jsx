@@ -10,25 +10,36 @@ import Register from "../components/Register";
 import { useNavigate } from "react-router-dom";
 // import { AuthContext } from "../context/AuthContext";
 import Cookies from "js-cookie";
+import { ThemeContext } from "../context/ThemeContext";
+import { useContext } from "react";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 function BasicExample() {
   const navigate = useNavigate();
+  const { theme, mode, toggleTheme } = useContext(ThemeContext);
 
   // const datosUsuario = useContext(AuthContext);
 
   // const { user, isAuthenticated, toggleAuth } = datosUsuario;
 
-  const handleLogout = () => {
+  const handleLogout = (e) => {
     Cookies.remove("token");
     localStorage.clear();
+    e.preventDefault();
     navigate("/");
   };
+
   const usuario = JSON.parse(localStorage.getItem("user"));
 
   return (
     <>
-      <Navbar expand="lg" fixed="top" className="custom-navbar">
-        {!usuario ? (
+      {!usuario ? (
+        <Navbar
+          expand="md"
+          fixed="top"
+          className="custom-navbar"
+          style={{ background: theme.ui, color: theme.syntax }}
+        >
           <Container>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -42,29 +53,46 @@ function BasicExample() {
                 </NavDropdown>
               </Nav>
             </Navbar.Collapse>
+            {mode === "light" ? (
+              <FaMoon onClick={toggleTheme} />
+            ) : (
+              <FaSun onClick={toggleTheme} style={{ color: "white" }} />
+            )}
           </Container>
-        ) : (
+        </Navbar>
+      ) : (
+        <Navbar
+          expand="md"
+          fixed="top"
+          className="custom-navbar"
+          style={{ background: theme.ui, color: theme.syntax }}
+        >
           <Container>
             <em>
               {" "}
               <h1 className="welcome">BIENVENID@ {usuario.name}</h1>{" "}
             </em>
-
-            <Navbar.Brand href="/">Home</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
+                <Navbar.Brand href="/">Home</Navbar.Brand>
+
                 <Nav.Link href="/movies">Movies</Nav.Link>
                 <Nav.Link href="">Series</Nav.Link>
-                <Nav.Link href="">Favoritos</Nav.Link>
+                <Nav.Link href="/movies/favorites">Favorites</Nav.Link>
                 <Nav.Link href="/" onClick={handleLogout}>
-                  Logout
+                  Log out
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
-          </Container>
-        )}
-      </Navbar>
+            {mode === "light" ? (
+              <FaMoon onClick={toggleTheme} />
+            ) : (
+              <FaSun onClick={toggleTheme} style={{ color: "white" }} />
+            )}
+          </Container>{" "}
+        </Navbar>
+      )}
     </>
   );
 }

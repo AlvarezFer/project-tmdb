@@ -4,9 +4,12 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "../estilos.css/moviesDetails.css";
 import Navbar from "../commons/Navbar";
+import { ThemeContext } from "../context/ThemeContext";
+import { useContext } from "react";
 
 const SelectMovie = () => {
   const [select, setSelect] = useState({});
+  const { theme } = useContext(ThemeContext);
   const usuario = JSON.parse(localStorage.getItem("user")) || {};
 
   const { movieId } = useParams();

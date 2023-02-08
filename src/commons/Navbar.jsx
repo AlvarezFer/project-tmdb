@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import { useNavigate } from "react-router-dom";
-// import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 import Cookies from "js-cookie";
 import { ThemeContext } from "../context/ThemeContext";
 import { useContext } from "react";
@@ -18,22 +18,24 @@ function BasicExample() {
   const navigate = useNavigate();
   const { theme, mode, toggleTheme } = useContext(ThemeContext);
 
-  // const datosUsuario = useContext(AuthContext);
+  const datosUsuario = useContext(AuthContext);
 
-  // const { user, isAuthenticated, toggleAuth } = datosUsuario;
+  const { user, isAuthenticated } = datosUsuario;
 
-  const handleLogout = (e) => {
+  const handleLogout = () => {
     Cookies.remove("token");
-    localStorage.clear();
-    e.preventDefault();
+    localStorage.removeItem("user");
+    // localStorage.clear("user");
+    // window.location.reload();
+
     navigate("/");
   };
 
-  const usuario = JSON.parse(localStorage.getItem("user"));
+  // const usuario = JSON.parse(localStorage.getItem("user"));
 
   return (
     <>
-      {!usuario ? (
+      {!isAuthenticated ? (
         <Navbar
           expand="md"
           fixed="top"
@@ -70,7 +72,7 @@ function BasicExample() {
           <Container>
             <em>
               {" "}
-              <h1 className="welcome">BIENVENID@ {usuario.name}</h1>{" "}
+              <h1 className="welcome">BIENVENID@ {user.name}</h1>{" "}
             </em>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

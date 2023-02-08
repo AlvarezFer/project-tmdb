@@ -4,13 +4,17 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "../estilos.css/moviesDetails.css";
 import Navbar from "../commons/Navbar";
-import { ThemeContext } from "../context/ThemeContext";
+// import { ThemeContext } from "../context/ThemeContext";
 import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const SelectMovie = () => {
   const [select, setSelect] = useState({});
-  const { theme } = useContext(ThemeContext);
-  const usuario = JSON.parse(localStorage.getItem("user")) || {};
+  // const { theme } = useContext(ThemeContext);
+
+  const datosUsuario = useContext(AuthContext);
+
+  const { isAuthenticated } = datosUsuario;
 
   const { movieId } = useParams();
 
@@ -24,7 +28,7 @@ const SelectMovie = () => {
 
   return (
     <>
-      {usuario ? <Navbar /> : ""}
+      {isAuthenticated ? <Navbar /> : ""}
       <div className="details-container">
         <img
           className="img-col"

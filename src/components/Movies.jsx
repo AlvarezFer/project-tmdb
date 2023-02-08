@@ -8,8 +8,10 @@ import axios from "axios";
 import useSearchMovies from "../hooks/useSearchMovies";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
-const Card = ({ title, poster, movieId }) => {
+const Card = ({ title, poster, movieId, id }) => {
   const [fav, setFav] = useState("");
   const [tog, setTog] = useState(true);
 
@@ -31,17 +33,15 @@ const Card = ({ title, poster, movieId }) => {
         })
         .then((res) => res.data);
     } else {
-      console.log("favorito borrado");
-      // axios
-      //   .delete(`http://localhost:9000/api/favoritos/${id}`)
-      //   .then((del) => console.log(del, "borrado correctamente"));
+      axios
+        .delete(`http://localhost:9000/api/favoritos/${id}`)
+        .then((del) => console.log(del, "borrado correctamente"));
     }
   };
 
   return (
     <body>
       <div className="container-movies">
-        <div className="fav-div"> </div>
         <Link
           to={`/movies/${movieId}`}
           style={{ textDecoration: "none", textAlign: "center" }}
@@ -76,12 +76,12 @@ const Card = ({ title, poster, movieId }) => {
 const Movies = () => {
   const peliculas = useMovies();
   const [resultados, buscar] = useSearchMovies();
-
-  const usuario = JSON.parse(localStorage.getItem("user")) || {};
+  const datosUsuario = useContext(AuthContext);
+  const { isAuthenticated } = datosUsuario;
 
   return (
     <div>
-      {usuario ? <Navbar /> : ""}
+      {isAuthenticated ? <Navbar /> : ""}
 
       <Search buscador={buscar} />
 

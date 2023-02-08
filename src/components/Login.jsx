@@ -2,18 +2,18 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import { useContext } from "react";
+import { useContext } from "react";
 import "../estilos.css/login.css";
 import Swal from "sweetalert2";
-// import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const datosUsuario = useContext(AuthContext);
+  const datosUsuario = useContext(AuthContext);
 
-  // const { user, isAuthenticated, toggleAuth } = datosUsuario;
+  const { toggleAuth } = datosUsuario;
 
   // const usuario = JSON.parse(localStorage.getItem("user"));
 
@@ -33,7 +33,7 @@ const Login = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        localStorage.setItem("user", JSON.stringify(res.data));
+        toggleAuth(res.data);
         Swal.fire({
           title: "Exito",
           text: "Iniciaste sesion de manera exitosa",

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 //definir un estado inicial para nuestro contexto
 const initialState = {
@@ -23,6 +23,17 @@ const AuthContextProvider = ({ children }) => {
       isAuthenticated: !isLoggedId.isAuthenticated,
     });
   };
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setIsLoggedId(JSON.parse(storedUser));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(isLoggedId));
+  }, [isLoggedId]);
 
   return (
     <AuthContext.Provider value={{ ...isLoggedId, toggleAuth }}>

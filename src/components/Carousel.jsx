@@ -15,10 +15,11 @@ function DarkVariantExample() {
       <Carousel variant="dark">
         <Carousel.Item className="car-item">
           <img className="d-block w-100" src={cine} alt="First slide" />
-
-          <Carousel.Caption>
-            <h1 className="title-i">BIENVENIDOS A NOTFLIX</h1>
-            <p className="p-inicial">
+          <Carousel.Caption className="align-items-center">
+            <h1 className="d-none d-md-block text-center title-i">
+              BIENVENIDOS A NOTFLIX
+            </h1>{" "}
+            <p className="p-inicial text-center">
               Millones de películas, programas de televisión por descubrir.
               Explora ahora.
             </p>

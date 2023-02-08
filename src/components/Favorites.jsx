@@ -6,8 +6,8 @@ import axios from "axios";
 
 export const Fav = ({ id, title, poster }) => {
   const del = (e) => {
-    e.preventDefault();
     axios.delete(`http://localhost:9000/api/favoritos/${id}`).then(() => {
+      e.preventDefault();
       window.location.reload();
     });
   };

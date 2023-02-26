@@ -2,36 +2,49 @@ import useFavorites from "../hooks/useFavorites";
 import "../estilos.css/favorites.css";
 import Navbar from "../commons/Navbar";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { ClipLoader } from "react-spinners";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export const Fav = ({ id, title, poster }) => {
   const del = (e) => {
     axios.delete(`http://localhost:9000/api/favoritos/${id}`).then(() => {
       e.preventDefault();
-      window.location.reload();
+    });
+    Swal.fire({
+      title: "Exito",
+      text: `Se Elimino ${title} a favoritos`,
+      icon: "success",
+      allowOutsideClick: false,
+    }).then((res) => {
+      if (res.isConfirmed) {
+        window.location.reload();
+      }
     });
   };
 
   return (
-    <div className="container-fav" key={id}>
-      <div className="p-fav">
-        <h1 className="h-title"> {title}</h1>
-      </div>
-      <div className="img-favs">
-        <img
-          className="img-fav"
-          src={`https://image.tmdb.org/t/p/w220_and_h330_face/${poster}`}
-          alt={title}
-        />
-        <div className="btn-delete">
-          {" "}
-          <FaRegTrashAlt
-            onClick={del}
-            style={{ width: "40px", height: "20px", color: "red" }}
+    <>
+      <div className="container-fav" key={id}>
+        <div className="p-fav">
+          <h1 className="h-title"> {title}</h1>
+        </div>
+        <div className="img-favs">
+          <img
+            className="img-fav"
+            src={`https://image.tmdb.org/t/p/w220_and_h330_face/${poster}`}
+            alt={title}
           />
+          <div className="btn-delete" style={{ cursor: "pointer" }}>
+            <FaRegTrashAlt
+              onClick={del}
+              style={{ width: "40px", height: "20px", color: "red" }}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -48,6 +61,7 @@ const Favorites = () => {
       <div className="padre">
         {favoritos?.map((favorito) => (
           <Fav
+            key={favorito.id}
             id={favorito.id}
             title={favorito.title}
             poster={favorito.poster}

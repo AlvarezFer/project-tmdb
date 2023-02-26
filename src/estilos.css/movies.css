@@ -1,60 +1,60 @@
-
-
 .container-movies {
-  
- position: relative;
+  position: relative;
   display: flex;
-   flex-direction: column;
+  flex-direction: column;
   justify-content: center;
-  
-  align-items: center;   
 
- margin: 10px 20px;
- box-shadow: 0 4px 8px 0 lightskyblue, 0 6px 20px rgba(0, 0, 0, 0, 19);
+  align-items: center;
+
+  margin: 10px 20px;
+  box-shadow: 0 4px 8px 0 lightskyblue, 0 6px 20px rgba(0, 0, 0, 0, 19);
   width: 90%;
- left: 126px;
- top: 40px;
- 
+  left: 126px;
+  top: 40px;
 }
-
 
 .p-movies {
   justify-content: center;
   height: auto;
   align-items: center;
-  margin: 0 auto;
   color: white;
-
 }
 
 .h-title {
   font-size: 1.3em;
-color: white;
-
- 
+  color: white;
+  margin: 50px;
 }
 
-
 .img-movies {
-position: relative;
-  width: 100%;
-  height: auto;
-  
+  position: relative;
 
   padding: 5px;
   text-align: center;
-
-  
 }
 
 .img-movie {
   border-radius: 10px;
-  
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.img-movie:hover {
+  transform: scale(1.2);
+  transition: transform 0.4s ease;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 400px;
+  height: 100vh;
 }
 
 body {
-  background-color: black
+  background-color: black;
 }
 
 @media (max-width: 600px) {

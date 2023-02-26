@@ -1,17 +1,36 @@
 .custom-navbar {
   height: 50px;
-  border: 2px solid gray;
-
-  opacity: 0.9;
+  border: 1px solid gray;
+  border-radius: 2px;
+  opacity: 1;
 }
 
-.custom-navbar {
-  background-color: gray;
+.navbar-expand-md {
+  background-color: red;
+}
+
+.navbar-nav {
+  margin-left: -102px;
 }
 
 .welcome {
   color: black;
-  font-size: 30px;
-  margin-right: 120px;
+
+  font-size: 22px;
+  margin-left: -400px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nav-title {
+  text-decoration: none;
+  color: black;
+  margin-left: 20px;
+}
+
+.nav-title:hover {
+  color: gray;
+}
+
+.mode {
+  margin-left: 260px;
 }

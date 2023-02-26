@@ -15,8 +15,6 @@ const Login = () => {
 
   const { toggleAuth } = datosUsuario;
 
-  // const usuario = JSON.parse(localStorage.getItem("user"));
-
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -55,7 +53,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-log">
       <h1 className="tle">INICIAR SESION </h1>
 
       <form onSubmit={handleSubmit}>

@@ -5,9 +5,8 @@ import SelectMovie from "./components/SelectMovie";
 import AuthContext from "./context/AuthContext";
 import NotFound from "./components/NotFound";
 import ThemeContext from "./context/ThemeContext";
-import DarkVariantExample from "./components/Carousel";
+import Home from "./components/Home";
 import Favorites from "./components/Favorites";
-
 import "././global.css";
 
 const App = () => {
@@ -16,7 +15,7 @@ const App = () => {
       <AuthContext>
         <ThemeContext>
           <Routes>
-            <Route path="/" element={<DarkVariantExample />}></Route>
+            <Route path="/" element={<Home />}></Route>
 
             <Route path="/movies" element={<Movies />}></Route>
             <Route path="/movies/favorites" element={<Favorites />}></Route>

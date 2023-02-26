@@ -6,23 +6,36 @@ const favRoute = express.Router();
 const Favoritos = require("../models/favoritos");
 const Users = require("../models/users");
 
-favRoute.post("/", (req, res) => {
-  Favoritos.create(req.body)
-    .then((fav) => {
-      res.status(201).send(fav);
-    })
-    .catch((error) =>
-      console.log(
-        error,
-        "no pudimos guardar tu favorito, asegurate de no guardar el mismo favorito"
-      )
-    );
+favRoute.post("/", async (req, res) => {
+  const { title, poster, movieId, userId } = req.body;
+
+  try {
+    // Crea el favorito
+    const fav = await Favoritos.create({ title, poster, movieId, userId });
+
+    // Asocia el favorito con el usuario correspondiente
+    const user = await Users.findByPk(userId);
+    await user.addFavorito(fav);
+
+    res.status(201).send(fav);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error al guardar el favorito");
+  }
 });
 
-favRoute.get("/", (req, res) => {
-  Favoritos.findAll()
-    .then((fav) => res.status(200).send(fav))
-    .catch((error) => console.log(error, "hubo un problema"));
+favRoute.get("/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const favoritos = await Favoritos.findAll({
+      where: { userId: userId },
+      include: { model: Users, as: "author" },
+    });
+    res.json(favoritos);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 });
 
 favRoute.delete("/:id", (req, res) => {

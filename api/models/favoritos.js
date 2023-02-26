@@ -9,7 +9,11 @@ Favoritos.init(
 
     poster: { type: Sequelize.STRING, allowNull: false, unique: true },
 
-    movieId: { type: Sequelize.STRING, allowNull: false, unique: true },
+    movieId: { type: Sequelize.INTEGER, allowNull: false, unique: true },
+    userId: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
   },
 
   { sequelize: db, modelName: "favoritos" }

@@ -54,3 +54,9 @@ li {
 .btn-color:hover {
   background-color: #0062cc;
 }
+
+.my-popup-class {
+  width: 400px !important;
+  height: 320px !important;
+  font-size: 14px !important;
+}

@@ -1,5 +1,5 @@
 .bg-image {
-  background: url("../estilos.css/imagenes.jpg/cines-2.webp");
+  background: url("../estilos.css/imagenes.jpg/fondo.jpg");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -8,18 +8,18 @@
   justify-content: center;
   align-items: center;
   margin-top: 80x;
-  opacity: 0.5; /* ajusta el valor según sea necesario */
+  opacity: 0.8; /* ajusta el valor según sea necesario */
 }
 
 .title {
   display: flex;
-  font-size: 4rem;
-  color: red;
-  text-align: center;
-  margin-right: 580px;
-  padding-bottom: 480px;
-  text-shadow: 5px 5px 6px black;
-  border-color: 2px solid;
+
+  font-size: 4rem; /* Tamaño del título */
+  margin-top: 8rem;
+  color: rgb(247, 47, 12);
+
+  padding-bottom: 320px;
+  text-shadow: 4px 4px 5px black;
 }
 
 .p-title {
@@ -29,4 +29,22 @@
   text-align: center;
   font-weight: 400;
   text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.46);
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+  .p-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+  .p-title {
+    font-size: 1rem;
+  }
 }

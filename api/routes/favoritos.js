@@ -1,7 +1,4 @@
-const { FavoriteBorder } = require("@material-ui/icons");
 const express = require("express");
-const { where } = require("sequelize");
-const { create } = require("../models/favoritos");
 const favRoute = express.Router();
 const Favoritos = require("../models/favoritos");
 const Users = require("../models/users");
@@ -10,6 +7,16 @@ favRoute.post("/", async (req, res) => {
   const { title, poster, movieId, userId } = req.body;
 
   try {
+    // Busca si ya existe el favorito
+    const existingFav = await Favoritos.findOne({
+      where: { movieId, userId },
+    });
+
+    // Si ya existe, devuelve un mensaje de error
+    if (existingFav) {
+      return res.status(400).send("El favorito ya existe");
+    }
+
     // Crea el favorito
     const fav = await Favoritos.create({ title, poster, movieId, userId });
 
@@ -24,14 +31,14 @@ favRoute.post("/", async (req, res) => {
   }
 });
 
+// Obtener los favoritos de un usuario
 favRoute.get("/:userId", async (req, res) => {
   try {
     const userId = req.params.userId;
-    const favoritos = await Favoritos.findAll({
-      where: { userId: userId },
-      include: { model: Users, as: "author" },
+    const user = await Users.findByPk(userId, {
+      include: { model: Favoritos, through: { attributes: [] } },
     });
-    res.json(favoritos);
+    res.json(user.favoritos);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });

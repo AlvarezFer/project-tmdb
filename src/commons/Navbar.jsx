@@ -13,43 +13,61 @@ import Cookies from "js-cookie";
 import { ThemeContext } from "../context/ThemeContext";
 import { useContext } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 function BasicExample() {
   const navigate = useNavigate();
   const { theme, mode, toggleTheme } = useContext(ThemeContext);
-
   const datosUsuario = useContext(AuthContext);
-
   const { user, isAuthenticated } = datosUsuario;
 
   const handleLogout = () => {
     Cookies.remove("token");
     localStorage.removeItem("user");
-    // localStorage.clear("user");
-    navigate("/");
-    window.location.reload();
-  };
 
-  // const usuario = JSON.parse(localStorage.getItem("user"));
+    Swal.fire({
+      title: "Cerrar Sesión",
+      text: "¿Está seguro que desea cerrar sesión?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí",
+      cancelButtonText: "Cancelar",
+      allowOutsideClick: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Cargando",
+          html: "Cerrando sesión...",
+          timerProgressBar: true,
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+            setTimeout(() => {
+              navigate("/");
+              window.location.reload();
+            }, 1000);
+          },
+        });
+      }
+    });
+  };
 
   return (
     <>
       {!isAuthenticated ? (
-        <Navbar
-          expand="md"
-          fixed="top"
-          className="custom-navbar"
-          style={{ background: theme.ui, color: theme.syntax }}
-        >
-          <Container>
+        <Navbar expand="md" fixed="top" className="custom-navbar">
+          <Container className="w-100">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="mx-auto">
+            <Navbar.Collapse
+              id="basic-navbar-nav"
+              className="justify-content-end"
+            >
+              <Nav className="mx-auto justify-content-center">
                 <Navbar.Brand>
-                  {" "}
                   <Link to="/" className="nav-title">
-                    {" "}
-                    Home{" "}
+                    Home
                   </Link>
                 </Navbar.Brand>
                 <NavDropdown
@@ -68,13 +86,6 @@ function BasicExample() {
                 </NavDropdown>
               </Nav>
             </Navbar.Collapse>
-            <div className="mode">
-              {mode === "light" ? (
-                <FaMoon onClick={toggleTheme} />
-              ) : (
-                <FaSun onClick={toggleTheme} style={{ color: "white" }} />
-              )}
-            </div>
           </Container>
         </Navbar>
       ) : (
@@ -82,24 +93,22 @@ function BasicExample() {
           expand="md"
           fixed="top"
           className="custom-navbar"
-          style={{ background: theme.ui, color: theme.syntax }}
+          style={{ backgroundColor: theme.ui }}
         >
           <Container>
             <div>
               {" "}
-              <h1 className="welcome">Bienvenid@ {user.name}</h1>{" "}
+              <h1 className="welcome" style={{ color: theme.sintax }}>
+                Bienvenid@ {user.name}
+              </h1>{" "}
             </div>
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
+            <Navbar.Collapse
+              id="basic-navbar-nav"
+              className="justify-content-end"
+            >
               <Nav className="me-auto ">
-                <Navbar.Brand>
-                  {" "}
-                  <Link to="/" className="nav-title">
-                    Home
-                  </Link>
-                </Navbar.Brand>
-
                 <Nav.Link>
                   <Link to="/movies" className="nav-title">
                     Movies{" "}
@@ -117,18 +126,21 @@ function BasicExample() {
                   </Link>
                 </Nav.Link>
                 <Nav.Link onClick={handleLogout}>
-                  <Link to="/" className="nav-title">
-                    {" "}
-                    Logout
-                  </Link>
+                  <Link className="nav-title">Logout</Link>
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
             <div className="mode">
               {mode === "light" ? (
-                <FaMoon onClick={toggleTheme} />
+                <FaMoon
+                  onClick={toggleTheme}
+                  style={{ color: "blue", cursor: "pointer" }}
+                />
               ) : (
-                <FaSun onClick={toggleTheme} style={{ color: "white" }} />
+                <FaSun
+                  onClick={toggleTheme}
+                  style={{ color: "#f3f374", cursor: "pointer" }}
+                />
               )}{" "}
             </div>
           </Container>{" "}

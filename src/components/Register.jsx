@@ -32,6 +32,9 @@ const Register = () => {
       text: "Se registró de manera exitosa",
       icon: "success",
       allowOutsideClick: false,
+      customClass: {
+        popup: "my-popup-class",
+      },
     });
   };
 

@@ -2,25 +2,26 @@ import useFavorites from "../hooks/useFavorites";
 import "../estilos.css/favorites.css";
 import Navbar from "../commons/Navbar";
 import { FaRegTrashAlt } from "react-icons/fa";
-import { ClipLoader } from "react-spinners";
-import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 export const Fav = ({ id, title, poster }) => {
   const del = (e) => {
+    e.preventDefault();
     axios.delete(`http://localhost:9000/api/favoritos/${id}`).then(() => {
-      e.preventDefault();
-    });
-    Swal.fire({
-      title: "Exito",
-      text: `Se Elimino ${title} a favoritos`,
-      icon: "success",
-      allowOutsideClick: false,
-    }).then((res) => {
-      if (res.isConfirmed) {
-        window.location.reload();
-      }
+      Swal.fire({
+        title: "Exito",
+        text: `Se Elimino ${title} a favoritos`,
+        icon: "success",
+        allowOutsideClick: false,
+        customClass: {
+          popup: "my-popup-class",
+        },
+      }).then((res) => {
+        if (res.isConfirmed) {
+          window.location.reload();
+        }
+      });
     });
   };
 

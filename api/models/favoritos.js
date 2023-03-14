@@ -5,11 +5,11 @@ class Favoritos extends Sequelize.Model {}
 
 Favoritos.init(
   {
-    title: { type: Sequelize.STRING, allowNull: false, unique: true },
+    title: { type: Sequelize.STRING, allowNull: false },
 
-    poster: { type: Sequelize.STRING, allowNull: false, unique: true },
+    poster: { type: Sequelize.STRING, allowNull: false },
 
-    movieId: { type: Sequelize.INTEGER, allowNull: false, unique: true },
+    movieId: { type: Sequelize.INTEGER, allowNull: false },
     userId: {
       type: Sequelize.INTEGER,
       allowNull: false,

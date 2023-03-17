@@ -4,8 +4,14 @@ import Navbar from "../commons/Navbar";
 import { FaRegTrashAlt } from "react-icons/fa";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
+import { useEffect, useState } from "react";
+import { ClipLoader } from "react-spinners";
 
 export const Fav = ({ id, title, poster }) => {
+  const { theme } = useContext(ThemeContext);
+
   const del = (e) => {
     e.preventDefault();
     axios.delete(`http://localhost:9000/api/favoritos/${id}`).then(() => {
@@ -29,7 +35,10 @@ export const Fav = ({ id, title, poster }) => {
     <>
       <div className="container-fav" key={id}>
         <div className="p-fav">
-          <h1 className="h-title"> {title}</h1>
+          <h1 className="h-title" style={{ color: theme.sintax }}>
+            {" "}
+            {title}
+          </h1>
         </div>
         <div className="img-favs">
           <img
@@ -38,10 +47,13 @@ export const Fav = ({ id, title, poster }) => {
             alt={title}
           />
           <div className="btn-delete" style={{ cursor: "pointer" }}>
-            <FaRegTrashAlt
-              onClick={del}
-              style={{ width: "40px", height: "20px", color: "red" }}
-            />
+            <button className="btn">
+              {" "}
+              <FaRegTrashAlt
+                onClick={del}
+                style={{ width: "40px", height: "20px", color: "red" }}
+              />{" "}
+            </button>
           </div>
         </div>
       </div>
@@ -50,25 +62,49 @@ export const Fav = ({ id, title, poster }) => {
 };
 
 const Favorites = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
   const favoritos = useFavorites();
+  const { theme } = useContext(ThemeContext);
 
   return (
     <>
       {" "}
-      <Navbar />
-      <h1 className="title-fav" style={{ color: "white", opacity: "0.6" }}>
-        TUS PELICULAS FAVORITAS
-      </h1>
-      <div className="padre">
-        {favoritos?.map((favorito) => (
-          <Fav
-            key={favorito.id}
-            id={favorito.id}
-            title={favorito.title}
-            poster={favorito.poster}
-          />
-        ))}
-      </div>
+      <Navbar /> <br />
+      <br />
+      {isLoading ? (
+        <div className="spinner" style={{ backgroundColor: theme.ui }}>
+          <ClipLoader size={150} color="#123456" className="spinner" />
+          <h1 className="spinner" style={{ backgroundColor: theme.ui }}>
+            Loading...
+          </h1>
+        </div>
+      ) : (
+        <div className="container-favmap" style={{ backgroundColor: theme.ui }}>
+          <br />
+
+          <h1
+            className="title-fav"
+            style={{ color: theme.sintax, backgroundColor: theme.ui }}
+          >
+            TUS PELICULAS FAVORITAS
+          </h1>
+          <div className="padre">
+            {favoritos?.map((favorito) => (
+              <Fav
+                key={favorito.id}
+                id={favorito.id}
+                title={favorito.title}
+                poster={favorito.poster}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </>
   );
 };

@@ -57,7 +57,7 @@ function BasicExample() {
   return (
     <>
       {!isAuthenticated ? (
-        <Navbar expand="md" fixed="top" className="custom-navbar">
+        <Navbar expand="md" fixed="top" className="custom">
           <Container className="w-100">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse
@@ -73,14 +73,14 @@ function BasicExample() {
                 <NavDropdown
                   title="Register"
                   id="basic-nav-dropdown"
-                  className="nav-title"
+                  // className="nav-title"
                 >
                   <Register />
                 </NavDropdown>
                 <NavDropdown
                   title="Login"
                   id="basic-nav-dropdown"
-                  className="nav-title"
+                  // className="nav-title"
                 >
                   <Login />
                 </NavDropdown>
@@ -99,7 +99,7 @@ function BasicExample() {
             <div>
               {" "}
               <h1 className="welcome" style={{ color: theme.sintax }}>
-                Bienvenid@ {user.name}
+                Welcome {user.name}
               </h1>{" "}
             </div>
 
@@ -110,23 +110,37 @@ function BasicExample() {
             >
               <Nav className="me-auto ">
                 <Nav.Link>
-                  <Link to="/movies" className="nav-title">
+                  <Link
+                    to="/movies"
+                    className="nav-title"
+                    style={{ color: theme.sintax }}
+                  >
                     Movies{" "}
                   </Link>
                 </Nav.Link>
                 <Nav.Link>
-                  <Link to="#" className="nav-title">
+                  <Link
+                    to="#"
+                    className="nav-title"
+                    style={{ color: theme.sintax }}
+                  >
                     Series
                   </Link>
                 </Nav.Link>
                 <Nav.Link>
-                  <Link to="/movies/favorites" className="nav-title">
+                  <Link
+                    to="/movies/favorites"
+                    className="nav-title"
+                    style={{ color: theme.sintax }}
+                  >
                     {" "}
                     Favorites{" "}
                   </Link>
                 </Nav.Link>
                 <Nav.Link onClick={handleLogout}>
-                  <Link className="nav-title">Logout</Link>
+                  <Link className="nav-title" style={{ color: theme.sintax }}>
+                    Log out
+                  </Link>
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>

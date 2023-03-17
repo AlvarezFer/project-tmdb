@@ -15,7 +15,7 @@ import { FaHeart } from "react-icons/fa";
 import { ClipLoader } from "react-spinners";
 import Swal from "sweetalert2";
 
-const Card = ({ title, poster, movieId }) => {
+const Card = ({ title, poster, movieId, vote }) => {
   const [favorito, setFavorito] = useState(true);
   const [fav, setFav] = useState("");
   const { theme } = useContext(ThemeContext);
@@ -82,6 +82,7 @@ const Card = ({ title, poster, movieId }) => {
               alt={title}
             />
           </Link>
+
           {
             <>
               <div className="div-btn" onClick={ToggleFavorito}>

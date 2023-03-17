@@ -1,27 +1,51 @@
-import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
-import { Navigate } from "react-router-dom";
+// import axios from "axios";
+// import { useEffect } from "react";
+// import { useState } from "react";
 
-export const ProtectedRoute = ({ children, isLog, redirectTo = "/" }) => {
-  console.log(isLog);
-  if (!isLog) {
+import { Route, Navigate } from "react-router-dom";
+
+const ProtectedRoute = ({ isAuthenticated, redirectTo, ...props }) => {
+  if (!isAuthenticated) {
     return <Navigate to={redirectTo} />;
   }
-  return children;
+  return <Route {...props} />;
 };
 
-const RutaPrivate = () => {
-  const [isLog, setIsLog] = useState({});
+const RutaPrivada = ({
+  component: Component,
+  isAuthenticated,
+  redirectTo,
+  ...rest
+}) => (
+  <ProtectedRoute
+    {...rest}
+    isAuthenticated={isAuthenticated}
+    redirectTo={redirectTo}
+    render={(props) => <Component {...props} />}
+  />
+);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:9000/api/users/secret", { withCredentials: true })
-      .then((res) => setIsLog(res.data))
-      .catch((error) => (error, "error de token"));
-  }, []);
+export default RutaPrivada;
 
-  return isLog;
-};
+// export const ProtectedRoute = ({ children, isLog, redirectTo = "/" }) => {
+//   console.log(isLog);
+//   if (!isLog) {
+//     return <Navigate to={redirectTo} />;
+//   }
+//   return children;
+// };
 
-export default RutaPrivate;
+// const RutaPrivate = () => {
+//   const [isLog, setIsLog] = useState({});
+
+//   useEffect(() => {
+//     axios
+//       .get("http://localhost:9000/api/users/secret", { withCredentials: true })
+//       .then((res) => setIsLog(res.data))
+//       .catch((error) => (error, "error de token"));
+//   }, []);
+
+//   return isLog;
+// };
+
+// export default RutaPrivate;

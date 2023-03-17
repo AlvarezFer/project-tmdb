@@ -1,7 +1,6 @@
 .container-log {
   width: 300px;
   margin: 0 auto;
-
   padding: 10px;
 }
 
@@ -34,7 +33,6 @@ li {
 .inp {
   padding: 6px;
   border-color: #007bff;
-
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   width: 100%;

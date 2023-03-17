@@ -9,6 +9,7 @@
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  background: linear-gradient(to bottom, #444444, #999999);
 }
 
 .div-btn {
@@ -19,8 +20,4 @@
   height: 70px;
   width: 70px;
   z-index: 1;
-}
-
-.btn:hover {
-  background-color: yellow;
 }

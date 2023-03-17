@@ -3,45 +3,65 @@
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
-  width: 92%;
+  width: 96%;
   margin: auto;
-  margin-top: 4vh;
+  margin-top: 8vh;
 }
 
 .container-movies {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: 20%;
   align-items: center;
-  margin: 2em 0.5em 1em 0.5;
-  box-shadow: 0 4px 8px 0 lightskyblue, 0 6px 20px rgba(0, 0, 0, 0, 19);
+  margin: 12px;
+  margin-bottom: 80px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset !important;
+  border-radius: 8px;
+  background: linear-gradient(to bottom, #444444, #999999);
 }
 
 .p-movies {
-  height: auto;
+  height: 3.6em; /* limita la altura a 3.6em, ajusta según tus necesidades */
+  margin-bottom: 20px;
   color: white;
+  display: flex; /* aplica un contenedor flexible para alinear verticalmente */
+  align-items: center; /* alinea verticalmente el contenido del contenedor */
+  text-align: center; /* centra el texto horizontalmente */
+  overflow: hidden; /* oculta cualquier texto que sobrepase la altura definida */
+  padding: 0 0.5em; /* agrega un poco de espacio para el padding izquierdo y derecho */
 }
 
 .h-title {
-  font-size: 1.3em;
+  font-size: 1.1em;
   color: white;
-  margin: 50px;
+  margin: 20px;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: center;
+  word-wrap: break-word;
 }
 
 .img-movies {
   position: relative;
-
   height: auto;
-
   padding: 5px;
   text-align: center;
+  margin-top: 40px; /* agrega un margen de 10px entre el título y la imagen */
+  margin-bottom: 20px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 .img-movie {
   border-radius: 10px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
+  margin-top: 26px;
 }
 
 .img-movie:hover {

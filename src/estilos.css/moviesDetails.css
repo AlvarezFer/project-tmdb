@@ -1,82 +1,33 @@
-/* * {
-    text-decoration: none;
-  }
+body {
+  margin: 0;
+  height: 100vh;
+}
 
-  .details-container {
-    display: flex;
-    justify-content: center;
-    color: white;
-  }
-
-  .container-movies {
-    margin: 10px 20px;
-    box-shadow: 0 4px 8px 0 lightskyblue, 0 6px 20px rgba(0, 0, 0, 0, 19);
-    float: left;
-    width: 350px;
-    display: flex;
-
-    justify-content: center;
-  }
-
-  .img-col {
-    margin-left: 10%;
-    margin-top: 16vh;
-    width: 20%;
-    height: 20%;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  }
-
-  .col {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    justify-content: center;
-    height: auto;
-    text-align: center;
-    margin: 0 auto;
-    padding: 5px;
-    color: white;
-    margin-bottom: 20px;
-    margin-right: 20px;
-  }
-
-  .p-details {
-    font-size: 40px;
-    margin-top: 140px;
-  }
-
-  .h-details {
-    font-size: 60px;
-  }
-
-  @media (max-width: 600px) {
-    .details-container {
-      flex-direction: column;
-    }
-    .container-movies {
-      flex-direction: column;
-    }
-    .img-col {
-      width: 80%;
-      margin: auto;
-    }
-    .col {
-      width: 80%;
-    }
-  } */
+.container-det {
+  position: relative;
+  height: 100vh;
+}
 
 .details-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
-  margin-left: 1.8rem;
+  height: 78vh;
+  width: 72%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset !important;
+  border-radius: 8px;
+  background: linear-gradient(to bottom, #444444, #999999);
 }
 
 .p-details {
   font-size: 30px;
-  margin-top: 140px;
+  margin-top: 100px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -89,12 +40,12 @@
 }
 
 .img-col {
-  width: 20%;
-  margin-top: 200px;
+  width: 25%;
+  margin-left: 1.2em;
   margin-right: 1.8rem;
   border-radius: 4px;
   border: solid 2px;
-  border-color: rgb(48, 43, 43);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 .col {

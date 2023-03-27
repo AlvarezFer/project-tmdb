@@ -5,9 +5,7 @@ import { useContext } from "react";
 
 const useFavorites = () => {
   const [favorites, setFavorites] = useState([]);
-
   const datosUsuario = useContext(AuthContext);
-
   const userId = datosUsuario.user ? datosUsuario.user.id : null;
 
   useEffect(() => {

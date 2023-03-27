@@ -6,7 +6,6 @@ const NotFound = () => {
 
   return (
     <>
-      {" "}
       <div style={{ marginTop: "120px" }}>
         <h1
           style={{
@@ -15,7 +14,6 @@ const NotFound = () => {
             color: "white",
           }}
         >
-          {" "}
           ERROR 404
         </h1>
         <p
@@ -25,13 +23,11 @@ const NotFound = () => {
             color: "white",
           }}
         >
-          {" "}
           NOT FOUND PAGE
         </p>
         {usuario ? (
           <div style={{ textAlign: "center" }}>
             <Link to="/movies">
-              {" "}
               <button
                 style={{
                   border: "none",
@@ -43,13 +39,12 @@ const NotFound = () => {
                 }}
               >
                 Volver al inicio
-              </button>{" "}
+              </button>
             </Link>
           </div>
         ) : (
           <div style={{ textAlign: "center" }}>
             <Link to="/">
-              {" "}
               <button
                 style={{
                   border: "none",
@@ -61,7 +56,7 @@ const NotFound = () => {
                 }}
               >
                 Volver al inicio
-              </button>{" "}
+              </button>
             </Link>
           </div>
         )}

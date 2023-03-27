@@ -18,6 +18,7 @@ import Swal from "sweetalert2";
 const Card = ({ title, poster, movieId, vote }) => {
   const [favorito, setFavorito] = useState(true);
   const [fav, setFav] = useState("");
+  const [percentaje, setPercentaje] = useState(0);
   const { theme } = useContext(ThemeContext);
   const datosUsuario = useContext(AuthContext);
   const userId = datosUsuario.user.id;
@@ -61,9 +62,45 @@ const Card = ({ title, poster, movieId, vote }) => {
     }
   }, [fav]);
 
+  useEffect(() => {
+    const result = (vote / 10) * 100;
+    const roundedResult = result.toFixed();
+    setPercentaje(roundedResult);
+  }, [vote]);
+
   return (
     <>
       <div className="container-movies" style={{ backgroundColor: theme.ui }}>
+        <div className="element">
+          <svg width="50" height="50" viewBox="0 0 100 100">
+            <circle
+              cx="50"
+              cy="50"
+              r="40"
+              stroke="#ccc"
+              strokeWidth="14"
+              fill="none"
+            />
+            <path
+              stroke="#ffbf00"
+              strokeWidth="14"
+              fill="none"
+              strokeLinecap="round"
+              strokeDasharray="251.2"
+              strokeDashoffset={251.2 - (percentaje * 251.2) / 100}
+              d="M50,10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80"
+            />
+            <text
+              x="50"
+              y="50"
+              textAnchor="middle"
+              dominantBaseline="middle"
+              style={{ fontSize: "26px" }}
+            >
+              {percentaje}%
+            </text>
+          </svg>
+        </div>
         <Link
           to={`/movies/${movieId}`}
           style={{ textDecoration: "none", textAlign: "center" }}
@@ -82,7 +119,6 @@ const Card = ({ title, poster, movieId, vote }) => {
               alt={title}
             />
           </Link>
-
           {
             <>
               <div className="div-btn" onClick={ToggleFavorito}>
@@ -134,6 +170,7 @@ const Movies = () => {
                   title={pelicula.title}
                   poster={pelicula.poster_path}
                   movieId={pelicula.id}
+                  vote={pelicula.vote_average}
                 />
               ))
             : peliculas.map((pelicula) => (
@@ -142,6 +179,7 @@ const Movies = () => {
                   title={pelicula.title}
                   poster={pelicula.poster_path}
                   movieId={pelicula.id}
+                  vote={pelicula.vote_average}
                 />
               ))}
         </div>

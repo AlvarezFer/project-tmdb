@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-
 //definir un estado inicial para nuestro contexto
 const initialState = {
   user: null, //informacion del usuario

@@ -23,7 +23,6 @@ const Login = () => {
     e.preventDefault();
     setEmail("");
     setPassword("");
-
     axios
       .post(
         "http://localhost:9000/api/users/login",
@@ -35,7 +34,6 @@ const Login = () => {
       )
       .then((res) => {
         toggleAuth(res.data);
-
         Swal.fire({
           title: "Exito",
           text: "Iniciaste sesion de manera exitosa",
@@ -68,7 +66,6 @@ const Login = () => {
     <>
       <div className="container-log">
         <h1 className="tle">INICIAR SESION </h1>
-
         <form onSubmit={handleSubmit}>
           <ul>
             <li>

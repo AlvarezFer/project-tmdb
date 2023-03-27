@@ -1,31 +1,27 @@
-// import axios from "axios";
-// import { useEffect } from "react";
-// import { useState } from "react";
-
+import React from "react";
 import { Route, Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({ isAuthenticated, redirectTo, ...props }) => {
-  if (!isAuthenticated) {
-    return <Navigate to={redirectTo} />;
-  }
-  return <Route {...props} />;
+const RutaProtegida = ({ element: Component, ...rest }) => {
+  const isAuthenticated = () => {
+    const user = localStorage.getItem("user");
+    return user !== null;
+  };
+
+  return (
+    <Route
+      {...rest}
+      element={
+        isAuthenticated() ? (
+          <Component {...rest} />
+        ) : (
+          <Navigate to="/" replace={true} />
+        )
+      }
+    />
+  );
 };
 
-const RutaPrivada = ({
-  component: Component,
-  isAuthenticated,
-  redirectTo,
-  ...rest
-}) => (
-  <ProtectedRoute
-    {...rest}
-    isAuthenticated={isAuthenticated}
-    redirectTo={redirectTo}
-    render={(props) => <Component {...props} />}
-  />
-);
-
-export default RutaPrivada;
+export default RutaProtegida;
 
 // export const ProtectedRoute = ({ children, isLog, redirectTo = "/" }) => {
 //   console.log(isLog);

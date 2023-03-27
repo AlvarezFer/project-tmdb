@@ -33,9 +33,12 @@ const SelectMovie = () => {
 
   return (
     <>
-      {" "}
-      <div style={{ backgroundColor: theme.ui }} className="container-det">
-        {" "}
+      <div
+        style={{
+          backgroundColor: theme.ui,
+        }}
+        className="container-det"
+      >
         {isAuthenticated ? <Navbar /> : ""}
         {isLoading ? (
           <div className="spinner">
@@ -53,8 +56,11 @@ const SelectMovie = () => {
               alt=""
             />
             <div className="col">
+              <p className="p-details" style={{ color: theme.sintax }}>
+                {card.release_date}
+              </p>
               <h2 className="h-details" style={{ color: theme.sintax }}>
-                {card.title}{" "}
+                {card.title}
               </h2>
               <p className="p-details" style={{ color: theme.sintax }}>
                 {card.overview}

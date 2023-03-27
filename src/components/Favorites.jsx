@@ -33,10 +33,13 @@ export const Fav = ({ id, title, poster }) => {
 
   return (
     <>
-      <div className="container-fav" key={id}>
+      <div
+        className="container-fav"
+        key={id}
+        style={{ backgroundColor: theme.ui }}
+      >
         <div className="p-fav">
           <h1 className="h-title" style={{ color: theme.sintax }}>
-            {" "}
             {title}
           </h1>
         </div>
@@ -48,11 +51,10 @@ export const Fav = ({ id, title, poster }) => {
           />
           <div className="btn-delete" style={{ cursor: "pointer" }}>
             <button className="btn">
-              {" "}
               <FaRegTrashAlt
                 onClick={del}
                 style={{ width: "40px", height: "20px", color: "red" }}
-              />{" "}
+              />
             </button>
           </div>
         </div>
@@ -73,7 +75,6 @@ const Favorites = () => {
 
   return (
     <>
-      {" "}
       <Navbar /> <br />
       <br />
       {isLoading ? (
@@ -86,14 +87,13 @@ const Favorites = () => {
       ) : (
         <div className="container-favmap" style={{ backgroundColor: theme.ui }}>
           <br />
-
           <h1
             className="title-fav"
             style={{ color: theme.sintax, backgroundColor: theme.ui }}
           >
             TUS PELICULAS FAVORITAS
           </h1>
-          <div className="padre">
+          <div className="padre" style={{ backgroundColor: theme.ui }}>
             {favoritos?.map((favorito) => (
               <Fav
                 key={favorito.id}

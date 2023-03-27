@@ -8,7 +8,6 @@ const Search = ({ buscador }) => {
   const handleInput = (e) => {
     setSearch(e.target.value);
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     buscador(search);
@@ -24,11 +23,9 @@ const Search = ({ buscador }) => {
           placeholder="Search"
           value={search}
         />
-
         <button className="searchButton" type="submit">
           <FaSearch size={20} />
         </button>
-
         <br />
       </div>
     </form>

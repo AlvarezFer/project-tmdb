@@ -1,4 +1,3 @@
-// import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -70,18 +69,10 @@ function BasicExample() {
                     Home
                   </Link>
                 </Navbar.Brand>
-                <NavDropdown
-                  title="Register"
-                  id="basic-nav-dropdown"
-                  // className="nav-title"
-                >
+                <NavDropdown title="Register" id="basic-nav-dropdown">
                   <Register />
                 </NavDropdown>
-                <NavDropdown
-                  title="Login"
-                  id="basic-nav-dropdown"
-                  // className="nav-title"
-                >
+                <NavDropdown title="Login" id="basic-nav-dropdown">
                   <Login />
                 </NavDropdown>
               </Nav>
@@ -102,8 +93,8 @@ function BasicExample() {
                 Welcome {user.name}
               </h1>{" "}
             </div>
-
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
             <Navbar.Collapse
               id="basic-navbar-nav"
               className="justify-content-end"
@@ -133,8 +124,7 @@ function BasicExample() {
                     className="nav-title"
                     style={{ color: theme.sintax }}
                   >
-                    {" "}
-                    Favorites{" "}
+                    Favorites
                   </Link>
                 </Nav.Link>
                 <Nav.Link onClick={handleLogout}>
@@ -143,20 +133,20 @@ function BasicExample() {
                   </Link>
                 </Nav.Link>
               </Nav>
+              <div className="mode">
+                {mode === "light" ? (
+                  <FaMoon
+                    onClick={toggleTheme}
+                    style={{ color: "blue", cursor: "pointer" }}
+                  />
+                ) : (
+                  <FaSun
+                    onClick={toggleTheme}
+                    style={{ color: "#f3f374", cursor: "pointer" }}
+                  />
+                )}{" "}
+              </div>
             </Navbar.Collapse>
-            <div className="mode">
-              {mode === "light" ? (
-                <FaMoon
-                  onClick={toggleTheme}
-                  style={{ color: "blue", cursor: "pointer" }}
-                />
-              ) : (
-                <FaSun
-                  onClick={toggleTheme}
-                  style={{ color: "#f3f374", cursor: "pointer" }}
-                />
-              )}{" "}
-            </div>
           </Container>{" "}
         </Navbar>
       )}

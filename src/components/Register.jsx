@@ -11,12 +11,10 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setName("");
     setLastName("");
     setEmail("");
     setPassword("");
-
     axios
       .post("http://localhost:9000/api/users/register", {
         name,

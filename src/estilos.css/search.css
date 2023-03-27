@@ -1,13 +1,13 @@
 .searchContainer {
   display: flex;
   justify-content: center;
-  margin-top: 50px; /* ajusta el margen superior según sea necesario */
+  margin-top: 50px;
   margin-bottom: 10px;
 }
 
 .searchBox {
-  max-width: 500px; /* establece un ancho máximo para el contenedor de búsqueda */
-  max-height: 70px; /* establece una altura máxima para el contenedor de búsqueda */
+  max-width: 500px;
+  max-height: 70px;
   display: flex;
   align-items: center;
 }
@@ -36,5 +36,16 @@
   .searchBox {
     flex-direction: column;
     align-items: center;
+    max-width: 300px;
+    max-height: 100%;
+  }
+
+  .searchInput {
+    margin-top: 20px;
+    margin-right: 0;
+  }
+
+  .searchButton {
+    margin-top: 20px;
   }
 }

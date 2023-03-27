@@ -10,18 +10,14 @@
   margin-top: 80x;
   opacity: 0.8; /* ajusta el valor según sea necesario */
 }
-
 .title {
   display: flex;
-
   font-size: 4rem; /* Tamaño del título */
   margin-top: 8rem;
   color: rgb(247, 47, 12);
-
   padding-bottom: 320px;
   text-shadow: 4px 4px 5px black;
 }
-
 .p-title {
   display: flex;
   font-size: 2rem;
@@ -30,7 +26,6 @@
   font-weight: 400;
   text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.46);
 }
-
 @media screen and (max-width: 768px) {
   .title {
     font-size: 3rem;
@@ -39,7 +34,6 @@
     font-size: 1.5rem;
   }
 }
-
 @media screen and (max-width: 480px) {
   .title {
     font-size: 2rem;

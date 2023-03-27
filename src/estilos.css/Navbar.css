@@ -14,19 +14,15 @@
 .custom {
   background-color: transparent !important;
 }
-
 .nav-link {
   color: #fff !important; /* blanco */
   font-weight: 610 !important;
-
   font-family: "Roboto", sans-serif;
   transition: color 0.2s ease-in-out;
 }
-
 .nav-link:hover {
   color: #0062cc !important;
 }
-
 .nav-title {
   text-decoration: none;
   font-size: 20px;
@@ -37,7 +33,6 @@
   font-family: "Roboto", sans-serif;
   white-space: nowrap;
 }
-
 #basic-nav-dropdown {
   font-size: 20px;
   margin-top: -3px;
@@ -50,13 +45,11 @@
 .Navbar.Toggle {
   margin-left: auto !important;
 }
-
 .custom-navbar .navbar-toggler {
   margin-top: -10px;
   margin-left: auto !important;
   border: 2px solid black;
 }
-
 .navbar-nav .dropdown-menu {
   /* background: url("../estilos.css/imagenes.jpg/fondo.jpg"); */
   background-color: rgb(20, 158, 177);
@@ -65,22 +58,41 @@
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
-
 .nav-title:hover {
   color: #0062cc !important;
 }
-
 .navbar-nav {
   margin-left: -102px;
 }
-
 .welcome {
   color: white;
   font-size: 22px;
   margin-left: -400px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
 .mode {
-  margin-left: 260px;
+  margin-left: 42px;
+}
+
+@media (max-width: 600px) {
+  .nav-title {
+    margin-left: 300px;
+    font-size: 18px;
+  }
+
+  .mode {
+    margin-left: 194px;
+  }
+  .nav-link {
+    margin: -4px;
+  }
+  .me-auto {
+    margin-top: 64px;
+  }
+  .navbar-toggler {
+    margin-right: 22px;
+  }
+  .navbar-brand {
+    margin-left: -280px;
+  }
 }

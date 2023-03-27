@@ -3,7 +3,6 @@
   margin: 0 auto;
   padding: 10px;
 }
-
 .tit {
   font-size: 34px;
   text-align: center;
@@ -11,17 +10,14 @@
   color: #333;
   text-shadow: 5px 5px 13px rgba(0, 0, 0, 0.65);
 }
-
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 li {
   margin-bottom: 10px;
 }
-
 .n {
   display: inline-block;
   width: 80px;
@@ -30,7 +26,6 @@ li {
   color: #333;
   text-shadow: none;
 }
-
 .inp-stl {
   padding: 6px;
   border-color: #007bff;
@@ -38,7 +33,6 @@ li {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   width: 100%;
 }
-
 .btn-color {
   background-color: #007bff;
   color: #fff;
@@ -52,11 +46,9 @@ li {
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
-
 .btn-color:hover {
   background-color: #0062cc;
 }
-
 .my-popup-class {
   width: 400px !important;
   height: 320px !important;

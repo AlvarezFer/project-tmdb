@@ -7,7 +7,13 @@
   margin: auto;
   margin-top: 8vh;
 }
-
+.element {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 4px;
+  margin-right: 4px;
+}
 .container-movies {
   position: relative;
   display: flex;
@@ -22,18 +28,16 @@
   border-radius: 8px;
   background: linear-gradient(to bottom, #444444, #999999);
 }
-
 .p-movies {
-  height: 3.6em; /* limita la altura a 3.6em, ajusta según tus necesidades */
-  margin-bottom: 20px;
+  height: 3.6em;
+  margin-top: 40px;
   color: white;
-  display: flex; /* aplica un contenedor flexible para alinear verticalmente */
-  align-items: center; /* alinea verticalmente el contenido del contenedor */
-  text-align: center; /* centra el texto horizontalmente */
-  overflow: hidden; /* oculta cualquier texto que sobrepase la altura definida */
-  padding: 0 0.5em; /* agrega un poco de espacio para el padding izquierdo y derecho */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 0 0.5em;
 }
-
 .h-title {
   font-size: 1.1em;
   color: white;
@@ -46,28 +50,24 @@
   text-align: center;
   word-wrap: break-word;
 }
-
 .img-movies {
   position: relative;
   height: auto;
   padding: 5px;
   text-align: center;
-  margin-top: 40px; /* agrega un margen de 10px entre el título y la imagen */
+  margin-top: 40px;
   margin-bottom: 20px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
-
 .img-movie {
   border-radius: 10px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
   margin-top: 26px;
 }
-
 .img-movie:hover {
   transform: scale(1.05);
 }
-
 .spinner {
   display: flex;
   justify-content: center;
@@ -75,15 +75,48 @@
   margin-bottom: 400px;
   height: 100vh;
 }
-
 .my-popup-class {
   width: 400px !important;
   height: 320px !important;
   font-size: 14px !important;
 }
 
+@media (max-width: 1024px) {
+  .img-movie {
+    flex-direction: column;
+    width: 90%;
+    margin: 8px auto;
+  }
+  .spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 112px;
+    height: 50vh;
+  }
+}
+
+@media (max-width: 1024px) {
+  .img-movies {
+    flex-direction: column;
+    width: 70%;
+    margin: 10px auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .h-title {
+    flex-direction: column;
+    width: 70%;
+    margin-bottom: 20px;
+  }
+}
+
 @media (max-width: 600px) {
   .container-movies {
     flex-direction: column;
+    width: 70%;
+    margin: 8px auto;
+    margin-top: 40px;
   }
 }
